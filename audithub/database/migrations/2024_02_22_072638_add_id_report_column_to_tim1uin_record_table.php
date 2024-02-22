@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tim1uin_status', function (Blueprint $table) {
-            $table->bigIncrements('id_status');
-            $table->string('keterangan')->nullabel();
+        Schema::table('tim1uin_record', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_report')->after('user_id');
+            $table->foreign('id_report')->references('id_report')->on('tim1uin_report');
         });
     }
 
@@ -22,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tim1uin_status');
+        Schema::table('tim1uin_record', function (Blueprint $table) {
+            $table->dropColumn('id_report');
+        });
     }
 };

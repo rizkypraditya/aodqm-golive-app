@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report', function (Blueprint $table) {
+        Schema::create('tim1uin_report', function (Blueprint $table) {
             $table->bigIncrements('id_report'); // Mengubah menjadi bigIncrements dengan nama 'id_report'
-            $table->string('users')->unique();
-            $table->string('nama_project')->nullable();
-            $table->date('tanggal')->nullable();
-            $table->string('xml')->nullable();
-            $table->string('maincord')->nullable();
-            $table->string('abd')->nullable();
-            $table->string('valins')->nullable();
-            $table->date('submit_date')->nullable();
+            $table->string('nama_project', 100)->require();
+            $table->string('nama', 100)->require();
+            $table->date('tanggal')->require();
+            $table->string('xml')->require();
+            $table->string('maincord')->require();
+            $table->string('abd')->require();
+            $table->string('valins')->require();
+            $table->string('status', 100)->require();
+            $table->date('submit_date')->require();
             $table->string('approver')->nullable();
             $table->timestamps();
         });

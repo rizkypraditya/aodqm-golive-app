@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tim1uin_password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::table('tim1uin_report', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->after('id_report');
+            $table->foreign('user_id')->references('id')->on('tim1uin_user');
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tim1uin_password_reset_tokens');
+        Schema::table('tim1uin_report', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 };

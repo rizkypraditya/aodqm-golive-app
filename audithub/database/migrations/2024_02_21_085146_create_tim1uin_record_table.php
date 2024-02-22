@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('tim1uin_record', function (Blueprint $table) {
             $table->bigIncrements('id_record');
-            $table->string('modifed_by')->nullabel();
-            $table->date('submit_date')->nullable();
-            $table->string('note')->nullable();
+            $table->string('modifed_by', 100)->nullabel();
+            $table->date('submit_date', )->nullable();
+            $table->string('note', 200)->nullable();
+
         });
         
     }
