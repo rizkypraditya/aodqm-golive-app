@@ -1,7 +1,7 @@
 <?php
-
+use App\Http\Controllers\TelkomController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('login', [LoginController::class,'login']);
+Route::get('l', [TelkomController::class,'telkom']);
