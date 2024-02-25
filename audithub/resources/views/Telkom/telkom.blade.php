@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div id="garis-garis2"></div>
-            <div style="color:#55565B; margin-top: 4px; " >
+            <div style="color:#55565B; margin-top: 4px;" >
                 <p>Main Menu :</p>
             </div>
             <div class="main">
@@ -94,14 +94,14 @@
                     <div id="garis-garis"></div>
                 </label>
             </div>
-            <header class="shadow" style="background-color:#F31313 ; height: 65px;">
+            <header class="shadow" style="background-color:#F31313 ; height: 65px; ">
                 <div class="container d-flex flex-wrap justify-content-between py-2">
                     <div  style="margin-left: 200px; text-align: center; line-height: 0; color:#ffffff" >
                         <h4><b>AuditHub</b></h4>
                         <p>By Telkom</p>
                     </div>
                     <div class="logot">
-                        <h6> Ahmad Gazali. Z
+                        <h6>{{ Auth::user()->name }}!
                             <img src="assets/img/BAGAS.jpg" alt="" class="icon" style="width: 30px; height: auto; margin-right: 4px;">
                             <img src="assets/img/bell.png" alt="" class="ico" style="width: 20px; height: auto;margin-left: 10px;">
                             <svg style="margin-left: 20px;" clxmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi-bi-box-arrow-right" viewBox="0 0 16 16">
@@ -110,18 +110,47 @@
                             </svg>
                         </a></h6>
                     </div>
-                    <div class="jumbotron" style="margin-right:500px;">
-                        <div class="row">
-                        <div class="col-md-6" style="margin-top: 20px; letter-spacing: 3px;" >
-                            <h4><b style="color: #F31313">Role</b><b>:</b><b>Mitra</b></h4>
-                            
-                        </div>
-                        </div>
-                    </div>
                 </div>
             </header>
+            <div class="jumbotron" style="margin-right:500px;">
+                <div class="row">
+                <div class="col-md-6" style="margin-top: 20px; letter-spacing: 3px;" >
+                    <h6><b style="color: #F31313">Role</b><b style="color: black">:</b><b style="color: black">Mitra</b></h6>
+                </div>
+                    <div class="report">
+                        <div class="form-container">
+                            <button class="back-button">Back</button>
+                            <h5>Add Report</h5>
+                            <div class="sender-info">
+                                <p>Nama Pengirim: {{ Auth::user()->name }}!</p>
+                                <p>ID: 123456789</p>
+                                <p>Tgl: 15-02-2024</p>
+                            </div>
+                            <form>
+                                <label for="projectTitle">Project Title*</label>
+                                <input type="text" id="projectTitle" name="projectTitle" required>
+                                
+                                <label for="fileKML">Upload File KML (only .kml)</label>
+                                <input type="file" id="fileKML" name="fileKML" accept=".kml">
+                                
+                                <label for="fileMAINCORD">Upload File MAINCORD (only .xix)</label>
+                                <input type="file" id="fileMAINCORD" name="fileMAINCORD" accept=".xix">
+                                
+                                <label for="fileABD">Upload File ABD (only .pdf)</label>
+                                <input type="file" id="fileABD" name="fileABD" accept=".pdf">
+                                
+                                <label for="fileGambar">Upload File Gambar (only .jpg)</label>
+                                <input type="file" id="fileGambar" name="fileGambar" accept=".jpg">
+                                
+                                <button type="submit" class="upload-button">UPLOAD</button>
+                            </form>
+                        </div>   
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="admin.js"></script>
+    <script src="assets/js/sideBar.js"></script>
 </body>
 </html>
+

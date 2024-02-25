@@ -1,3 +1,4 @@
+
 *{
     padding: 0;
     margin: 0;
@@ -15,6 +16,7 @@
     box-sizing: border-box;
     flex-direction: column;
     transition: all ease-in .3s;
+    
 }
 
 .sidebar.hide{
@@ -22,9 +24,12 @@
     transition: all ease-out .3s;
 }
 
-.main-content{
-    background-color: #EEEEEE;
+.main-content {
+    background-color: #f4f4f4;
     flex-grow: 1;
+
+    
+
 }
 
 .sidebar .description-header{
@@ -34,7 +39,8 @@
     font-size: 16px;
     line-height: 16px;
     text-align: center;
-    color: #B6252A;
+    color: #ed5151;
+   
 }
 
 .sidebar.hide .description-header{
@@ -122,6 +128,13 @@
 h6 {
     color: #EEEEEE;
 }
+
+.col-md-6 {
+    margin-left: 5px;
+
+}
+
+
 .main .list-item .icon{
     color: rgb(8, 0, 0);
 }
@@ -136,8 +149,6 @@ h6 {
     margin-left: 10px;
    
 }
-
-
 
 #menu-button{
     width: 32px;
@@ -274,5 +285,84 @@ h6 {
     100%{
         transform: rotateZ(0);
     }
+}
+
+
+
+ .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 150%;
+    margin-left: 40px;
+    
+    
+
+}
+
+.back-button {
+    font-size: 16px;
+    color: #333;
+    background: none;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+h5{
+    color: #e74c3c;
+    text-align: center;
+    margin-bottom: 2px;
+    
+}
+
+.sender-info p {
+    font-size: 14px;
+    color: #555;
+    line-height: 2px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    margin-top: 1px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="file"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #e74c3c;
+    border-radius: 4px;
+    color: #e74c3c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upload-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e74c3c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: #c0392b;
 }
 

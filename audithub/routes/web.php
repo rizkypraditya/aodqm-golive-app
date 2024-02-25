@@ -14,5 +14,7 @@ use App\Http\Controllers\LoginController;
 */
 
 
-Route::get('login', [LoginController::class,'login']);
-Route::get('l', [TelkomController::class,'telkom']);
+Route::get('/', [LoginController::class,'index']);
+Route::post('/', [LoginController::class,'login']);
+
+Route::get('telkom', [TelkomController::class,'telkom']);

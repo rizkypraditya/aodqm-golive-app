@@ -12,23 +12,25 @@
     <h1>AuditHub</h1>
     <h4>by Telkom</h4>
     <div class="login-box">
-        <form action="/login" method="post">
+        <form action="" method="post">
+            @csrf
             <div class="input-group">
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Username" required value="{{old('email')}}">
             </div>
             <div class="input-group">
                 <input type="password" name="password" placeholder="Password" required>
             </div>
             <div class="input-group">
-                <select name="role" required>
-                    <option value="" disabled selected>Choose Role</option>
-                    <option value="mitra">Mitra</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                </select>
-            </div>
-            <div class="input-group">
                 <button type="submit">LOGIN</button>
+                @if($errors->any()) 
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $item)
+                            <li>{{$item}}</li>    
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif   
             </div>
         </form>
         <a href="/forgot-password">Lupa Password?</a>
