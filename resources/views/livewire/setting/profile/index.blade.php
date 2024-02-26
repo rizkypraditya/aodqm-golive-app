@@ -32,10 +32,8 @@
         </div>
 
         <div class="col-md-6 col-xl-8">
-            @if (auth()->user()->roles == 'teacher' && auth()->user()->teacher)
-                @livewire('setting.profile.teacher-profile', ['user_id' => auth()->user()->id])
-            @elseif (auth()->user()->roles == 'student' && auth()->user()->student)
-                @livewire('setting.profile.student-profile', ['user_id' => auth()->user()->id])
+            @if (auth()->user()->roles == 'mitra' && auth()->user()->mitra)
+                @livewire('setting.profile.mitra-profile', ['user_id' => auth()->user()->id])
             @else
                 <div class="card">
                     <div class="card-body py-5 text-center">

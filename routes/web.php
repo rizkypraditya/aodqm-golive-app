@@ -22,7 +22,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
      * beranda / home
      */
     Route::get('beranda', Home\Index::class)->name('home')
-        ->middleware('roles:admin,users');
+        ->middleware('roles:admin,users,mitra');
 
     /**
      * master
@@ -45,6 +45,37 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
             Route::get('/', Index::class)->name('index');
             Route::get('/tambah', Create::class)->name('create');
             Route::get('/{id}/sunting', Edit::class)->name('edit');
+        });
+    });
+
+    /**
+     *  report
+     */
+    Route::namespace('Report')->middleware('roles:admin,user,mitra')->prefix('report')->name('report.')->group(function () {
+        Route::get('/', Index::class)->name('index');
+        Route::get('/tambah', Create::class)->name('create');
+        Route::get('/{id}/sunting', Edit::class)->name('edit');
+        Route::get('/{id}/detail', Detail::class)->name('detail');
+    });
+
+    /**
+     * setting
+     */
+    Route::prefix('pengaturan')->name('setting.')->middleware('roles:admin,user,mitra')->namespace('Setting')->group(function () {
+        Route::redirect('/', 'pengaturan/aplikasi');
+
+        /**
+         * Profile
+         */
+        Route::prefix('profil')->name('profile.')->group(function () {
+            Route::get('/', Profile\Index::class)->name('index');
+        });
+
+        /**
+         * Account
+         */
+        Route::prefix('akun')->name('account.')->group(function () {
+            Route::get('/', Account\Index::class)->name('index');
         });
     });
 });

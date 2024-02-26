@@ -41,13 +41,18 @@ class Create extends Component
         try {
             DB::beginTransaction();
 
-            User::create([
+            $user = User::create([
                 'username' => $this->username,
                 'email' => $this->email,
                 'password' => $this->password,
                 'roles' => $this->roles,
-                'avatar' => $this->avatar->store('avatars', 'public'),
             ]);
+
+            if ($this->avatar) {
+                $user->update([
+                    'avatar' => $this->avatar->store('avatars', 'public'),
+                ]);
+            }
 
             DB::commit();
         } catch (Exception $e) {

@@ -9,6 +9,7 @@ use App\Livewire\Traits\DataTable\WithSorting;
 use App\Models\User;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 
 class Index extends Component
@@ -30,6 +31,9 @@ class Index extends Component
         $deleteCount = $users->count();
 
         foreach ($users as $data) {
+            if ($data->avatar) {
+                File::delete(public_path('storage/' . $this->avatar));
+            }
             $data->delete();
         }
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Livewire\Attributes\Title;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -57,7 +57,9 @@ class Edit extends Component
             }
 
             if ($this->avatar) {
-                Storage::disk('avatar')->delete($user->avatar);
+                if ($user->avatar) {
+                    File::delete(public_path('storage/' . $user->avatar));
+                }
 
                 $user->update(['avatar' => $this->avatar->store('avatars', 'public')]);
             }

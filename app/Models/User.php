@@ -51,4 +51,9 @@ class User extends Authenticatable
             ? url('storage/' . $this->avatar)
             : 'https://gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s=1024';
     }
+
+    public function mitra()
+    {
+        return $this->hasOne(Mitra::class, 'user_id', 'id')->withDefault();
+    }
 }

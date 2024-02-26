@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserTableSeeder::class,
             MitraTableSeeder::class,
+            ReportTableSeeder::class,
         ]);
     }
 }

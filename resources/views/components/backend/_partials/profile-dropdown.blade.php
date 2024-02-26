@@ -12,8 +12,8 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        <a href="#" class="dropdown-item">Profil</a>
-        <a href="#" class="dropdown-item">Akun</a>
+        <a href="{{ route('setting.profile.index') }}" class="dropdown-item">Profil</a>
+        <a href="{{ route('setting.account.index') }}" class="dropdown-item">Akun</a>
 
         <div class="dropdown-divider"></div>
 

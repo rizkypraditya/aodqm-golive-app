@@ -1,9 +1,9 @@
 <div>
-    <x-slot name="title">Pengaturan Profil Guru</x-slot>
+    <x-slot name="title">Pengaturan Profil Mitra</x-slot>
 
-    <x-slot name="pageTitle">Pengaturan Profil Guru</x-slot>
+    <x-slot name="pageTitle">Pengaturan Profil Mitra</x-slot>
 
-    <x-slot name="pagePretitle">Pengaturan Profil Guru</x-slot>
+    <x-slot name="pagePretitle">Pengaturan Profil Mitra</x-slot>
 
     <div class="row row-cards">
         <div class="col-12">
@@ -13,56 +13,34 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-lg-6">
-                            <x-form.input wire:model="nama" name="nama" label="Nama" type="text"
-                                placeholder="masukkan nama" autofocus />
+                            <x-form.input wire:model="nama" name="nama" label="Nama" placeholder="masukkan nama"
+                                type="text" />
                         </div>
 
                         <div class="col-12 col-lg-6">
-                            <x-form.input wire:model="email" name="email" label="Email" type="text"
-                                placeholder="masukkan email" autofocus />
+                            <x-form.input wire:model="email" name="email" label="Email" placeholder="masukkan email"
+                                type="text" />
                         </div>
 
                         <div class="col-12 col-lg-6">
-                            <x-form.input wire:model="phone" name="phone" label="Nomor Ponsel" type="text"
-                                placeholder="masukkan nomor ponsel" autofocus />
+                            <x-form.input wire:model="noPonsel" name="noPonsel" label="Nomor Ponsel"
+                                placeholder="masukkan nomor ponsel" type="text" />
                         </div>
 
                         <div class="col-12 col-lg-6">
-                            <x-form.select wire:model.lazy="category" name="category" label="Kategori">
+                            <x-form.select wire:model.lazy="jenisKelamin" name="jenisKelamin" label="Jenis Kelamin">
                                 <option selected value=""> - Pilih - </option>
-                                @foreach (config('const.teacher_category') as $value)
-                                    <option wire:key="calling-{{ $value }}" value="{{ $value }}">
-                                        {{ ucwords($value) }}
-                                    </option>
-                                @endforeach
-                            </x-form.select>
-                        </div>
-
-                        <div class="col-12 col-lg-6">
-                            <x-form.select wire:model.lazy="gender" name="gender" label="Jenis Kelamin">
-                                <option selected value=""> - Pilih - </option>
-                                @foreach (config('const.gender') as $value)
-                                    <option wire:key="calling-{{ $value }}" value="{{ $value }}">
-                                        {{ ucwords($value) }}
-                                    </option>
-                                @endforeach
-                            </x-form.select>
-                        </div>
-
-                        <div class="col-12 col-lg-6">
-                            <x-form.select wire:model.lazy="religion" name="religion" label="Agama">
-                                <option selected value=""> - Pilih - </option>
-                                @foreach (config('const.religion') as $value)
-                                    <option wire:key="calling-{{ $value }}" value="{{ $value }}">
-                                        {{ ucwords($value) }}
+                                @foreach (config('const.gender') as $gender)
+                                    <option wire:key="row-{{ $gender }}" value="{{ $gender }}">
+                                        {{ ucwords($gender) }}
                                     </option>
                                 @endforeach
                             </x-form.select>
                         </div>
 
                         <div class="col-12">
-                            <x-form.textarea wire:model="address" name="address" label="Alamat Siswa"
-                                placeholder="masukkan alamat siswa" type="text" />
+                            <x-form.textarea wire:model="alamat" name="alamat" label="Alamat Lengkap"
+                                placeholder="masukkan alamat" type="text" />
                         </div>
                     </div>
                 </div>

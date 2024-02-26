@@ -10,6 +10,7 @@ return [
     'rolesTwo' => [
         'users',
         'admin',
+        'mitra',
     ],
 
     'akun' => [
@@ -20,5 +21,11 @@ return [
     'gender' => [
         'laki-laki',
         'perempuan',
+    ],
+
+    'status_report' => [
+        'dikirim',
+        'disetujui',
+        'perlu revisi',
     ],
 ];
