@@ -19,7 +19,7 @@
                         <span>
                             @if (Route::has('password.request'))
                                 <span class="form-label-description">
-                                    <a href="{{ route('password.request') }}">
+                                    <a class="text-red" href="{{ route('password.request') }}">
                                         Lupa kata sandi?
                                     </a>
                                 </span>
@@ -45,7 +45,7 @@
                     </label>
                 </div>
                 <div class="form-footer">
-                    <button type="submit" class="btn btn-primary w-100">Masuk</button>
+                    <button type="submit" class="btn btn-red w-100">Masuk</button>
                 </div>
                 <div class="hr-text">or</div>
                 <div class="card-body">

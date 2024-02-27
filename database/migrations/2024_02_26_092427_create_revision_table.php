@@ -11,18 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('report', function (Blueprint $table) {
+        Schema::create('revision', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('admin_id')->nullable();
+            $table->foreignId('report_id')->nullable();
             $table->foreignId('mitra_id')->nullable();
-
-            $table->text('description')->nullable();
-            $table->string('file_report')->nullable();
-            $table->string('file_report_2')->nullable();
-            $table->string('file_report_3')->nullable();
-            $table->string('file_report_4')->nullable();
-            $table->string('project_title')->nullable();
             $table->string('status')->nullable();
-
+            $table->text('note_revision')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('report');
+        Schema::dropIfExists('revision');
     }
 };

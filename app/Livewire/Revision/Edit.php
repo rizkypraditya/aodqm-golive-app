@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Livewire\Report;
+namespace App\Livewire\Revision;
 
 use App\Models\Report;
+use App\Models\Revision;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,7 @@ class Edit extends Component
 {
     use WithFileUploads;
 
-    #[Title('Sunting Laporan')]
+    #[Title('Sunting Revisi Laporan')]
 
     public $deskripsi;
     public $lokasi;
@@ -25,6 +26,7 @@ class Edit extends Component
     public $judulProyek;
 
     public $reportId;
+    public $revisionId;
 
     public function rules()
     {
@@ -55,6 +57,7 @@ class Edit extends Component
         }
 
         $report = Report::findOrFail($this->reportId);
+        $revision = Revision::findOrFail($this->revisionId);
 
         try {
             DB::beginTransaction();
@@ -66,6 +69,9 @@ class Edit extends Component
                     'project_title' => $this->judulProyek,
                     'status' => 'dikirim',
                 ]);
+
+                $revision->status = 'dikirim';
+                $revision->save();
 
                 if ($this->fileLaporan) {
                     if (Storage::disk('local')->exists($report->file_report)) {
@@ -113,32 +119,35 @@ class Edit extends Component
             session()->flash('alert', [
                 'type' => 'danger',
                 'message' => 'Gagal.',
-                'detail' => "data laporan gagal disunting.",
+                'detail' => "data laporan revisi gagal dikirim.",
             ]);
         }
 
         session()->flash('alert', [
             'type' => 'success',
             'message' => 'Berhasil.',
-            'detail' => "data laporan berhasil disunting.",
+            'detail' => "data laporan revisi berhasil dikirim.",
         ]);
 
-        return redirect()->route('report.index');
+        return redirect()->route('revision.index');
     }
 
     public function mount($id)
     {
-        $report = Report::findOrFail($id);
+        $revision = Revision::findOrFail($id);
+        $report = Report::findOrFail($revision->report_id);
 
         if ($report) {
+            $this->revisionId = $revision->id;
             $this->reportId = $report->id;
             $this->deskripsi = $report->description;
             $this->judulProyek = $report->project_title;
         }
     }
 
+
     public function render()
     {
-        return view('livewire.report.edit');
+        return view('livewire.revision.edit');
     }
 }

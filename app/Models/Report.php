@@ -17,11 +17,19 @@ class Report extends Model
         'location',
         'project_title',
         'file_report',
+        'file_report_2',
+        'file_report_3',
+        'file_report_4',
         'status',
     ];
 
     public function mitra()
     {
         return $this->belongsTo(Mitra::class, 'mitra_id', 'id')->withDefault();
+    }
+
+    public function revision()
+    {
+        return $this->hasOne(Revision::class, 'report_id', 'id')->withDefault();
     }
 }

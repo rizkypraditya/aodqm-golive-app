@@ -44,6 +44,15 @@ return [
     ],
 
     [
+        'title' => 'Revisi',
+        'icon' => 'file-export',
+        'route-name' => 'revision.index',
+        'is-active' => 'revision*',
+        'description' => 'Daftar laporan.',
+        'roles' => ['admin', 'users', 'mitra'],
+    ],
+
+    [
         'title' => 'Pengaturan',
         'description' => 'Menampilkan pengaturan aplikasi.',
         'icon' => 'cog',

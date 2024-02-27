@@ -41,7 +41,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
         /**
          * user
          */
-        Route::namespace('User')->prefix('user')->name('user.')->group(function () {
+        Route::namespace('User')->prefix('pengguna')->name('user.')->group(function () {
             Route::get('/', Index::class)->name('index');
             Route::get('/tambah', Create::class)->name('create');
             Route::get('/{id}/sunting', Edit::class)->name('edit');
@@ -51,11 +51,22 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
     /**
      *  report
      */
-    Route::namespace('Report')->middleware('roles:admin,user,mitra')->prefix('report')->name('report.')->group(function () {
+    Route::namespace('Report')->middleware('roles:admin,user,mitra')->prefix('laporan')->name('report.')->group(function () {
         Route::get('/', Index::class)->name('index');
         Route::get('/tambah', Create::class)->name('create');
         Route::get('/{id}/sunting', Edit::class)->name('edit');
+        Route::get('/{id}/revisi', Revision::class)->name('revision');
+        Route::get('/{id}/download', Download::class)->name('download');
+    });
+
+    /**
+     *  revision
+     */
+    Route::namespace('Revision')->middleware('roles:admin,user,mitra')->prefix('revisi')->name('revision.')->group(function () {
+        Route::get('/', Index::class)->name('index');
+        Route::get('/{id}/sunting', Edit::class)->name('edit');
         Route::get('/{id}/detail', Detail::class)->name('detail');
+        Route::get('/{id}/download', Download::class)->name('download');
     });
 
     /**

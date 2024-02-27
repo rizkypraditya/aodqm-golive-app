@@ -7,7 +7,7 @@ use App\Livewire\Traits\DataTable\WithCachedRows;
 use App\Livewire\Traits\DataTable\WithPerPagePagination;
 use App\Livewire\Traits\DataTable\WithSorting;
 use App\Models\Report;
-use Illuminate\Support\Facades\File;
+use App\Models\Revision;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
@@ -35,12 +35,8 @@ class Index extends Component
         $deleteCount = $report->count();
 
         foreach ($report as $data) {
-            if ($data->location) {
-                File::delete(public_path('storage/' . $data->location));
-            }
-
-            if (Storage::disk('local')->exists($report->file_report)) {
-                Storage::disk('local')->delete($report->file_report);
+            if ($data->file_report) {
+                Storage::disk('local')->delete($data->file_report);
             }
 
             $data->delete();
@@ -81,6 +77,61 @@ class Index extends Component
         return $this->applyPagination($query);
     }
 
+    public function aproveReport($id)
+    {
+        $report = Report::find($id);
+
+        if ($report) {
+            $report->status = 'disetujui';
+            $report->save();
+
+            session()->flash('alert', [
+                'type' => 'success',
+                'message' => 'Berhasil.',
+                'detail' => "status laporan berhasil disetujui.",
+            ]);
+
+            return redirect()->back();
+        }
+    }
+
+    public function unAproveReport($id)
+    {
+        $report = Report::find($id);
+
+        if ($report) {
+            $report->status = 'dikirim';
+            $report->save();
+
+            session()->flash('alert', [
+                'type' => 'success',
+                'message' => 'Berhasil.',
+                'detail' => "status laporan batal disetujui.",
+            ]);
+
+            return redirect()->back();
+        }
+    }
+
+    public function deleteRevision($id)
+    {
+        $report = Report::find($id);
+        $revision = Revision::where('report_id', $report->id)->first();
+
+        $report->status = 'dikirim';
+        $report->save();
+
+        if ($revision) {
+            $revision->delete();
+
+            session()->flash('alert', [
+                'type' => 'success',
+                'message' => 'Berhasil.',
+                'detail' => "revisi berhasil dibatalkan.",
+            ]);
+        }
+    }
+
     #[Computed()]
     public function allData()
     {
@@ -95,21 +146,6 @@ class Index extends Component
     public function resetFilters()
     {
         $this->reset('filters');
-    }
-
-    public function downloadFile($idReport)
-    {
-        $report = Report::find($idReport);
-
-        if (Storage::disk('local')->exists($report->file_report)) {
-            return Storage::download($report->file_report, Date('Y-m-d') . '_' . $report->project_title);
-        } else {
-            session()->flash('alert', [
-                'type' => 'danger',
-                'message' => 'Gagal.',
-                'detail' => "file laporan tidak terdapat.",
-            ]);
-        }
     }
 
     public function render()

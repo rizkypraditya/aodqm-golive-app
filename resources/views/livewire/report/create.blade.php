@@ -22,15 +22,33 @@
                     <x-form.input wire:model="judulProyek" name="judulPoryek" label="Judul Proyek"
                         placeholder="masukkan judul proyek" type="text" />
                 </div>
+            </div>
 
-                {{-- <div class="col-12 col-lg-6">
-                    <x-form.input wire:model="lokasi" name="lokasi" label="File Lokasi"
-                        placeholder="masukkan file lokasi" type="file" />
-                </div> --}}
-
+            <div class="row">
                 <div class="col-12 col-lg-6">
-                    <x-form.input wire:model="fileLaporan" name="fileLaporan" label="File Laporan"
+                    <x-form.input wire:model="fileLaporan" name="fileLaporan" label="Upload File KML (only .kml)"
                         placeholder="masukkan file laporan" type="file" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <x-form.input wire:model="fileLaporanTwo" name="fileLaporanTwo"
+                        label="Upload File MAINCORD (only .xlx)" placeholder="masukkan file laporan" type="file" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <x-form.input wire:model="fileLaporanThree" name="fileLaporanThree"
+                        label="Upload File ABD (only .pdf)" placeholder="masukkan file laporan" type="file" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <x-form.input wire:model="fileLaporanFour" name="fileLaporanFour"
+                        label="Upload File Gambar (only .jpg)" placeholder="masukkan file laporan" type="file" />
                 </div>
             </div>
         </div>

@@ -16,8 +16,10 @@ class Create extends Component
     #[Title('Tambah Laporan')]
 
     public $deskripsi;
-    public $lokasi;
     public $fileLaporan;
+    public $fileLaporanTwo;
+    public $fileLaporanThree;
+    public $fileLaporanFour;
     public $judulProyek;
 
     public function rules()
@@ -25,8 +27,10 @@ class Create extends Component
         return [
             'deskripsi' => ['required', 'string', 'min:2'],
             'judulProyek' => ['required', 'string', 'min:2', 'max:255'],
-            'lokasi' => ['nullable', 'image', 'min:2', 'max:2048'],
-            'fileLaporan' => ['required', 'file', 'min:2', 'max:2048'],
+            'fileLaporan' => ['required', 'file', 'min:2'],
+            'fileLaporanTwo' => ['required', 'file', 'min:2'],
+            'fileLaporanThree' => ['required', 'file', 'min:2'],
+            'fileLaporanFour' => ['required', 'file', 'min:2'],
         ];
     }
 
@@ -40,7 +44,7 @@ class Create extends Component
             session()->flash('alert', [
                 'type' => 'danger',
                 'message' => 'Gagal.',
-                'detail' => "Laporan hanya bisa disunting oleh mitra",
+                'detail' => "Laporan hanya bisa ditambah oleh mitra",
             ]);
 
             return back();
@@ -57,15 +61,27 @@ class Create extends Component
                     'status' => 'dikirim',
                 ]);
 
-                if ($this->lokasi) {
-                    $report->update([
-                        'location' => $this->lokasi->store('lokasi', 'public'),
-                    ]);
-                }
-
                 if ($this->fileLaporan) {
                     $report->update([
                         'file_report' => $this->fileLaporan->store('file-laporan'),
+                    ]);
+                }
+
+                if ($this->fileLaporanTwo) {
+                    $report->update([
+                        'file_report_2' => $this->fileLaporanTwo->store('file-laporan'),
+                    ]);
+                }
+
+                if ($this->fileLaporanThree) {
+                    $report->update([
+                        'file_report_3' => $this->fileLaporanThree->store('file-laporan'),
+                    ]);
+                }
+
+                if ($this->fileLaporanFour) {
+                    $report->update([
+                        'file_report_4' => $this->fileLaporanFour->store('file-laporan'),
                     ]);
                 }
             }

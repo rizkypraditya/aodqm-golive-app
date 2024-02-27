@@ -1,9 +1,9 @@
 <div>
-    <x-slot name="title">Sunting Laporan</x-slot>
+    <x-slot name="title">Sunting Revisi Laporan</x-slot>
 
-    <x-slot name="pagePretitle">Menyunting Daftar Laporan.</x-slot>
+    <x-slot name="pagePretitle">Menyunting Daftar Revisi Laporan.</x-slot>
 
-    <x-slot name="pageTitle">Sunting Laporan</x-slot>
+    <x-slot name="pageTitle">Sunting Revisi Laporan</x-slot>
 
     <x-slot name="button">
         <x-datatable.button.back name="Kembali" :route="route('report.index')" />
@@ -13,7 +13,7 @@
 
     <form class="card" wire:submit.prevent="edit" autocomplete="off">
         <div class="card-header">
-            Sunting data laporan
+            Sunting data laporan revisi
         </div>
 
         <div class="card-body">

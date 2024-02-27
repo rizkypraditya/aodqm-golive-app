@@ -5,9 +5,11 @@
 
     <x-slot name="pageTitle">Laporan</x-slot>
 
-    <x-slot name="button">
-        <x-datatable.button.add name="Tambah Laporan" :route="route('report.create')" />
-    </x-slot>
+    @if (auth()->user()->roles == 'mitra')
+        <x-slot name="button">
+            <x-datatable.button.add name="Tambah Laporan" :route="route('report.create')" />
+        </x-slot>
+    @endif
 
     <x-alert />
 
@@ -78,7 +80,6 @@
                             <x-datatable.column-sort name="Judul Projek" wire:click="sortBy('project_title')"
                                 :direction="$sorts['project_title'] ?? null" />
                         </th>
-
                         <th>
                             <x-datatable.column-sort name="Tanggal" wire:click="sortBy('created_at')"
                                 :direction="$sorts['created_at'] ?? null" />
@@ -93,11 +94,6 @@
                                 :direction="$sorts['mitra_id'] ?? null" />
                         </th>
 
-                        <th>
-                            <x-datatable.column-sort name="Laporan" wire:click="sortBy('file_report')"
-                                :direction="$sorts['file_report'] ?? null" />
-                        </th>
-
                         <th></th>
                     </tr>
                 </thead>
@@ -105,9 +101,9 @@
                 <tbody>
                     @if ($selectPage)
                         <tr>
-                            <td colspan="10" class="bg-azure-lt">
+                            <td colspan="10" class="bg-red-lt">
                                 @if (!$selectAll)
-                                    <div class="text-blue">
+                                    <div class="text-red">
                                         <span>Anda telah memilih <strong>{{ $this->rows->total() }}</strong> laporan,
                                             apakah
                                             Anda mau memilih semua <strong>{{ $this->rows->total() }}</strong>
@@ -146,16 +142,57 @@
 
                             <td>{{ $row->mitra->name ?? '-' }}</td>
 
-                            <td>
-                                <div class="d-flex">
+                            <td style="width: 30px">
+                                <div class="row gap-2">
                                     <div>
-                                        <a class="btn btn-sm" href="{{ route('report.edit', $row->id) }}">
-                                            Sunting
+                                        <a class="btn btn-sm bg-blue-lt w-100"
+                                            href="{{ route('report.download', $row->id) }}">
+                                            Download Laporan
                                         </a>
-                                        <button class="btn btn-sm bg-red-lt" wire:click='downloadFile({{ $row->id }})'>
-                                            Download File
-                                        </button>
                                     </div>
+
+                                    @if (auth()->user()->roles == 'admin' || auth()->user()->roles == 'user')
+                                        @if ($row->status == 'disetujui')
+                                            <div>
+                                                <button class="btn btn-sm bg-red-lt w-100"
+                                                    wire:click='unAproveReport({{ $row->id }})'>
+                                                    Batal Setujui
+                                                </button>
+                                            </div>
+                                        @elseif($row->status == 'revisi')
+                                            <div>
+                                                <button class="btn btn-sm bg-red-lt w-100"
+                                                    wire:click='deleteRevision({{ $row->id }})'>
+                                                    Hapus Revisi
+                                                </button>
+                                            </div>
+                                        @else
+                                            <div>
+                                                <button class="btn btn-sm bg-green-lt w-100"
+                                                    wire:click='aproveReport({{ $row->id }})'>
+                                                    Setujui Laporan
+                                                </button>
+                                            </div>
+                                        @endif
+
+                                        @if ($row->status != 'disetujui' && $row->status != 'revisi')
+                                            <div>
+                                                <a class="btn btn-sm bg-orange-lt w-100"
+                                                    href="{{ route('report.revision', $row->id) }}">
+                                                    Revisi Laporan
+                                                </a>
+                                            </div>
+                                        @endif
+                                    @else
+                                        @if (auth()->user()->roles == 'mitra')
+                                            <div>
+                                                <a class="btn btn-sm w-100"
+                                                    href="{{ route('report.edit', $row->id) }}">
+                                                    Sunting
+                                                </a>
+                                            </div>
+                                        @endif
+                                    @endif
                                 </div>
                             </td>
                         </tr>
