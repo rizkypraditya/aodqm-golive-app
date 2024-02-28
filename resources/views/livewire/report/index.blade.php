@@ -151,7 +151,7 @@
                                         </a>
                                     </div>
 
-                                    @if (auth()->user()->roles == 'admin' || auth()->user()->roles == 'user')
+                                    @if (auth()->user()->roles == 'admin' || auth()->user()->roles == 'users')
                                         @if ($row->status == 'disetujui')
                                             <div>
                                                 <button class="btn btn-sm bg-red-lt w-100"
