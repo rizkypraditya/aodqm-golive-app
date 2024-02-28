@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($infologin)){
             echo "<script>alert('Welcome')</script>";
-            return redirect('/telkom');
+            return redirect('/add');
         }else{
             echo "<script>alert('Password Salah')</script>";
             echo "<meta http-equiv='refresh' content='0; url=/'>";;

@@ -28,7 +28,21 @@ class ReportSeeader extends Seeder
             'status' => 'belome afrove',
             'submit_date' => '2003-03-21',
             'approver' => 'yziro',
-            ]
+            ],
+
+            [
+                'user_id' => 1,
+                'nama_project' => 'Indihome 2',
+                'nama' => 'Bagasz',
+                'tanggal' => '2003-03-21',
+                'xml' => 'blala.xml',
+                'maincord' => 'blala.exl',
+                'abd' => 'indihome.pdf',
+                'valins' => 'indihome.jpg',
+                'status' => 'belome afrove',
+                'submit_date' => '2003-03-21',
+                'approver' => 'yziro',
+                ]
         ];
 
         foreach($reportData as $key => $val){

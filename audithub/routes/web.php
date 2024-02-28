@@ -2,6 +2,8 @@
 use App\Http\Controllers\TelkomController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MitraController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +19,16 @@ use App\Http\Controllers\LoginController;
 Route::get('/', [LoginController::class,'index']);
 Route::post('/', [LoginController::class,'login']);
 
-Route::get('telkom', [TelkomController::class,'telkom']);
+Route::get('/playground', function() {
+    return view('playground');
+});
+
+Route::get('add', [TelkomController::class,'add']);
+
+Route::get('report', [MitraController::class,'report' ]);
+
+
+
+
+
+

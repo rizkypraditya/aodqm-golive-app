@@ -37,7 +37,7 @@
                     <img src="assets/img/telkk.jpg" style="margin-left: 40px; width: 100px; height: auto; margin-top: 20px" ; alt="">
                 </div>
             </div>
-            <div id="garis-garis2"></div>
+            <div id="garis-garis2" style="color: #F31313"></div>
             <div style="color:#55565B; margin-top: 4px;" >
                 <p>Main Menu :</p>
             </div>
@@ -88,64 +88,58 @@
             </div>
         </div>
         <div class="main-content">
-            <div id="menu-button">
-                <input type="checkbox" id="menu-checkbox">
-                <label for="menu-checkbox" id="menu-label">
-                    <div id="garis-garis"></div>
-                </label>
-            </div>
-            <header class="shadow" style="background-color:#F31313 ; height: 65px; ">
-                <div class="container d-flex flex-wrap justify-content-between py-2">
-                    <div  style="margin-left: 200px; text-align: center; line-height: 0; color:#ffffff" >
-                        <h4><b>AuditHub</b></h4>
-                        <p>By Telkom</p>
-                    </div>
-                    <div class="logot">
-                        <h6>{{ Auth::user()->name }}!
-                            <img src="assets/img/BAGAS.jpg" alt="" class="icon" style="width: 30px; height: auto; margin-right: 4px;">
-                            <img src="assets/img/bell.png" alt="" class="ico" style="width: 20px; height: auto;margin-left: 10px;">
-                            <svg style="margin-left: 20px;" clxmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi-bi-box-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                            </svg>
-                        </a></h6>
-                    </div>
+            <div class="container d-flex flex-wrap justify-content-between py-2"  style="background-color:#F31313 ; height: 65px, ">
+                <div id="menu-button">
+                    <input type="checkbox" id="menu-checkbox">
+                    <label for="menu-checkbox" id="menu-label">
+                        <div id="garis-garis"></div>
+                    </label>
                 </div>
-            </header>
-            <div class="jumbotron" style="margin-right:500px;">
-                <div class="row">
+                <div  style="margin-left: 200px; text-align: center; line-height: 0; color:#ffffff" >
+                    <h4><b>AuditHub</b></h4>
+                    <p>By Telkom</p>
+                </div>
+                <div class="logot">
+                    <h6>{{ Auth::user('')->name }}!
+                        <img src="assets/img/BAGAS.jpg" alt="" class="icon" style="width: 30px; height: auto; margin-right: 4px;">
+                        <img src="assets/img/bell.png" alt="" class="ico" style="width: 20px; height: auto;margin-left: 10px;">
+                        <svg style="margin-left: 20px;" clxmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi-bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
+                    </a></h6>
+                </div>
+            </div>
+            <div class="conten" style="margin-right:500px; top:-200px;"> 
                 <div class="col-md-6" style="margin-top: 20px; letter-spacing: 3px;" >
                     <h6><b style="color: #F31313">Role</b><b style="color: black">:</b><b style="color: black">Mitra</b></h6>
                 </div>
-                    <div class="report">
-                        <div class="form-container">
-                            <button class="back-button">Back</button>
-                            <h5>Add Report</h5>
-                            <div class="sender-info">
-                                <p>Nama Pengirim: {{ Auth::user()->name }}!</p>
-                                <p>ID: 123456789</p>
-                                <p>Tgl: 15-02-2024</p>
-                            </div>
-                            <form>
-                                <label for="projectTitle">Project Title*</label>
-                                <input type="text" id="projectTitle" name="projectTitle" required>
-                                
-                                <label for="fileKML">Upload File KML (only .kml)</label>
-                                <input type="file" id="fileKML" name="fileKML" accept=".kml">
-                                
-                                <label for="fileMAINCORD">Upload File MAINCORD (only .xix)</label>
-                                <input type="file" id="fileMAINCORD" name="fileMAINCORD" accept=".xix">
-                                
-                                <label for="fileABD">Upload File ABD (only .pdf)</label>
-                                <input type="file" id="fileABD" name="fileABD" accept=".pdf">
-                                
-                                <label for="fileGambar">Upload File Gambar (only .jpg)</label>
-                                <input type="file" id="fileGambar" name="fileGambar" accept=".jpg">
-                                
-                                <button type="submit" class="upload-button">UPLOAD</button>
-                            </form>
-                        </div>   
+                <div class="form-container">
+                    <button class="back-button">Back</button>
+                    <h5>Add Report</h5>
+                    <div class="sender-info">
+                        <p>Nama Pengirim: {{ Auth::user()->name }}!</p>
+                        <p>ID: 123456789</p>
+                        <p>Tgl: 15-02-2024</p>
                     </div>
+                    <form>
+                        <label for="projectTitle">Project Title*</label>
+                        <input type="text" id="projectTitle" name="projectTitle" required>
+                        
+                        <label for="fileKML">Upload File KML (only .kml)</label>
+                        <input type="file" id="fileKML" name="fileKML" accept=".kml">
+                        
+                        <label for="fileMAINCORD">Upload File MAINCORD (only .xix)</label>
+                        <input type="file" id="fileMAINCORD" name="fileMAINCORD" accept=".xix">
+                        
+                        <label for="fileABD">Upload File ABD (only .pdf)</label>
+                        <input type="file" id="fileABD" name="fileABD" accept=".pdf">
+                        
+                        <label for="fileGambar">Upload File Gambar (only .jpg)</label>
+                        <input type="file" id="fileGambar" name="fileGambar" accept=".jpg">
+                        
+                        <button type="submit" class="upload-button">UPLOAD</button>
+                    </form> 
                 </div>
             </div>
         </div>

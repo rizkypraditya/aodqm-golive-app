@@ -1,0 +1,59 @@
+dashboard-body {
+    padding: 20px;
+}
+
+.new-report-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+
+.control-buttons .sort-btn, 
+.control-buttons .filter-btn {
+    background-color: #cccccc;
+    border: none;
+    padding: 10px 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.column-download .download-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.prev-page-btn, .next-page-btn {
+    background-color: #cccccc;
+    border: none;
+    padding: 5px 10px;
+}
+
+.rows-per-page {
+    margin: 0 10px;
+}

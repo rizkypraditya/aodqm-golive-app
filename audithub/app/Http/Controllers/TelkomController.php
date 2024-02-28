@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class TelkomController extends Controller
 {
-    function telkom(){
-        return view('Telkom.telkom');
+    function add(){
+        return view('Mitra.add');
     }
 }

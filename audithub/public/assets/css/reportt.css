@@ -9,7 +9,7 @@
 }
 
 .sidebar{
-    background-color: #ffffff;
+    background-color: #f7f7f7;
     margin-right: -30px;
     padding: 15px;
     display: flex;
@@ -18,22 +18,25 @@
     transition: all ease-in .3s;
     height: 100vh;
     width: 300px;
-
+    border-style: solid; /* Menentukan gaya border: solid, dotted, dashed, dll. */
+    border-width: 4px; /* Menentukan ketebalan border */
+    border-color: #B6252A;
+    border-radius: 10px;
   
 }
 
 .conten{
     margin-top: 8%;
+    flex-grow: 1;
 }
-.navbar{
-    width: 100%;
-    position: fixed;
-    
-}
+
 
 .container {
     width: 100%;
     position: fixed;
+    z-index: 1;
+    justify-content: space-between;
+    
    
 }
 
@@ -43,10 +46,10 @@
 }
 
 .main-content {
-    background-color: #f4f4f4;
-    flex-grow: 1;
+    background-color: #FFDDDD;
     height: 100vh;
     width: 100%;
+    flex-grow: 1;
     overflow-y: scroll;
     
 
@@ -150,6 +153,7 @@
 h6 {
     color: #EEEEEE;
     margin-right: 160px;
+    position: relative;
 }
 
 .col-md-6 {
@@ -167,11 +171,14 @@ h6 {
     height: auto; 
     overflow: hidden; 
     border-radius: 100%;
+    
 }
 .logot .bi-bi-box-arrow-right{
     margin-left: 10px;
    
 }
+
+
 
 #menu-button{
     width: 32px;
@@ -311,140 +318,65 @@ h6 {
 
 
 
- .form-container {
-    background-color: #fff;
+.form-container {
+    background-color: #f0eded;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 150%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1.4);
+    width: 930px;
     margin-left: 40px;
-    
-    
-    
-
-}
-
-.back-button {
-    font-size: 16px;
-    color: #333;
-    background: none;
-    border: none;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-h5{
-    color: #e74c3c;
-    text-align: center;
-    margin-bottom: 2px;
-    
-}
-
-.sender-info p {
-    font-size: 14px;
-    color: #555;
-    line-height: 2px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    font-size: 14px;
-    color: #333;
-    margin-top: 1px;
-}
-
-input[type="text"] {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-input[type="file"] {
-    padding: 10px;
-    margin-top: 5px;
-    border: 2px solid #e74c3c;
-    border-radius: 4px;
-    color: #e74c3c;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.upload-button {
-    padding: 10px 20px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #e74c3c;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.upload-button:hover {
-    background-color: #c0392b;
-}
-
-dashboard-body {
-    padding: 20px;
-}
-
-.new-report-btn {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-right: 10px;
-}
-
-.control-buttons .sort-btn, 
-.control-buttons .filter-btn {
-    background-color: #cccccc;
-    border: none;
-    padding: 10px 20px;
-}
-
-.data-table {
-    width: 100%;
+    border-radius: 10px;
     border-collapse: collapse;
-    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    flex-grow: 1;
+    
+    
+
 }
 
-.data-table th, .data-table td {
-    border: 1px solid #cccccc;
-    padding: 10px;
+.tablee {
+    border-collapse: collapse;
+    width: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    flex-grow: 1;
+  
+    
+}
+
+ .tablee th, .tablee td {
+    padding: 8px;
     text-align: left;
 }
 
-.data-table th {
-    background-color: #e74c3c;
+.tablee th {
+    background-color: #B6252A;
     color: white;
+
 }
 
-.column-download .download-btn {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
+.tablee tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.table-pagination {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 20px 0;
+.tablee tr:hover {
+    background-color: #ddd;
 }
 
-.prev-page-btn, .next-page-btn {
-    background-color: #cccccc;
-    border: none;
-    padding: 5px 10px;
+.table-bordered th, .table-bordered td {
+    border: 1px solid #ddd;
 }
 
-.rows-per-page {
-    margin: 0 10px;
+
+/* Menambahkan transisi dan transformasi untuk navbar dan konten */
+.navbar.shifted, .main-content.shifted {
+    transition: margin .3s ease;
 }
+
+/* Ketika sidebar di-hide, geser navbar dan konten ke kiri */
+.sidebar.hide + .navbar.shifted, .sidebar.hide ~ .main-content.shifted {
+    margin-left: 87px; /* Sesuaikan nilai ini sesuai dengan lebar sidebar ketika di-hide */
+}
+
+
+
+

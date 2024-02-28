@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-    use HasFactory;
-
+    
     protected $table = 'tim1uin_report';
 }
