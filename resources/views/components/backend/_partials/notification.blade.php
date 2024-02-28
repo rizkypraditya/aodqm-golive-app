@@ -8,9 +8,7 @@
                 <div class="card-header">
                     @if (auth()->user()->roles == 'mitra')
                         <h3 class="card-title">Notifikasi Revisi Anda</h3>
-                    @endif
-
-                    @if (auth()->user()->roles == 'admin' || auth()->user()->roles == 'user')
+                    @else
                         <h3 class="card-title">Notifikasi Laporan Anda</h3>
                     @endif
                 </div>
