@@ -30,11 +30,6 @@
                     <div class="input-group input-group-flat">
                         <input class="form-control" name="password" type="password" placeholder="******"
                             autocomplete="current-password" required>
-                        <span class="input-group-text">
-                            <a href="#" class="link-secondary" title="Show password" data-bs-toggle="tooltip">
-                                @include('partials.svg.eye')
-                            </a>
-                        </span>
                     </div>
                 </div>
 

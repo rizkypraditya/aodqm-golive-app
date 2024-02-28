@@ -17,13 +17,11 @@ class Dot extends Component
                 ->where('status', 'revisi')
                 ->get()
                 ->count();
-        }
-
-        if (auth()->user()->roles == 'admin' || auth()->user()->roles == 'user') {
+        }else{
             $result = Report::query()
-                ->where('status', 'dikirim')
-                ->get()
-                ->count();
+            ->where('status', 'dikirim')
+            ->get()
+            ->count();
         }
 
         return $result;
