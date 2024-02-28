@@ -13,6 +13,13 @@ class Download extends Component
     public $reportId;
     public $mitraId;
 
+    public $url = [
+        'file_1' => '',
+        'file_2' => '',
+        'file_3' => '',
+        'file_4' => '',
+    ];
+
     public function mount($id)
     {
         $report = Report::findOrFail($id);
@@ -22,6 +29,11 @@ class Download extends Component
             $this->namaMitra = $report->mitra->name;
             $this->reportId = $report->id;
             $this->mitraId = $report->mitra->id;
+
+            $this->url['file_1'] = $report->file_report;
+            $this->url['file_2'] = $report->file_report_2;
+            $this->url['file_3'] = $report->file_report_3;
+            $this->url['file_4'] = $report->file_report_4;
         }
     }
 
@@ -29,7 +41,7 @@ class Download extends Component
     {
         $report = Report::findOrFail($this->reportId);
 
-        if (Storage::disk('local')->exists($report->file_report)) {
+        if ($report->file_report) {
             return Storage::download($report->file_report, Date('Y-m-d') . '_' . $report->project_title);
         } else {
             session()->flash('alert', [
@@ -44,7 +56,7 @@ class Download extends Component
     {
         $report = Report::findOrFail($this->reportId);
 
-        if (Storage::disk('local')->exists($report->file_report_2)) {
+        if (Storage::disk('public')->exists($report->file_report_2)) {
             return Storage::download($report->file_report_2, Date('Y-m-d') . '_' . $report->project_title . '_2');
         } else {
             session()->flash('alert', [
@@ -59,7 +71,7 @@ class Download extends Component
     {
         $report = Report::findOrFail($this->reportId);
 
-        if (Storage::disk('local')->exists($report->file_report_3)) {
+        if (Storage::disk('public')->exists($report->file_report_3)) {
             return Storage::download($report->file_report_3, Date('Y-m-d') . '_' . $report->project_title . '_3');
         } else {
             session()->flash('alert', [
@@ -74,7 +86,7 @@ class Download extends Component
     {
         $report = Report::findOrFail($this->reportId);
 
-        if (Storage::disk('local')->exists($report->file_report_4)) {
+        if (Storage::disk('public')->exists($report->file_report_4)) {
             return Storage::download($report->file_report_4, Date('Y-m-d') . '_' . $report->project_title . '_4');
             session()->flash('alert', [
                 'type' => 'danger',

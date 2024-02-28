@@ -48,7 +48,16 @@ return [
         'icon' => 'file-export',
         'route-name' => 'revision.index',
         'is-active' => 'revision*',
-        'description' => 'Daftar laporan.',
+        'description' => 'Daftar laporan revisi.',
+        'roles' => ['admin', 'users', 'mitra'],
+    ],
+
+    [
+        'title' => 'History',
+        'icon' => 'history',
+        'route-name' => 'history.index',
+        'is-active' => 'history*',
+        'description' => 'Daftar history.',
         'roles' => ['admin', 'users', 'mitra'],
     ],
 
@@ -58,7 +67,7 @@ return [
         'icon' => 'cog',
         'route-name' => 'setting.profile.index',
         'is-active' => 'setting*',
-        'roles' => ['admin', 'user', 'mitra'],
+        'roles' => ['admin', 'users', 'mitra'],
         'sub-menus' => [
             [
                 'title' => 'Profil',

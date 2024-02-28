@@ -39,23 +39,27 @@
                                     <p class="fw-bold">File Laporan</p>
                                     <div class="mt-3 list-inline list-inline mb-0 text-muted d-sm-block d-none">
                                         <div class="list-inline-item">
-                                            <button class="btn bg-orange-lt" wire:click='downloadXml'>Download
-                                                file .kml</button>
+                                            <a target="_blank" href="{{ asset('storage/' . $this->url['file_1']) }}"
+                                                class="btn bg-orange-lt" wire:click='downloadXml'>Download
+                                                file .kml</a>
                                         </div>
 
                                         <div class="list-inline-item">
-                                            <button class="btn bg-green-lt" wire:click='downloadXlx'>Download file
-                                                .xlx</button>
+                                            <a target="_blank" href="{{ asset('storage/' . $this->url['file_2']) }}"
+                                                class="btn bg-green-lt" wire:click='downloadXlx'>Download file
+                                                .xlx</a>
                                         </div>
 
                                         <div class="list-inline-item">
-                                            <button class="btn bg-blue-lt" wire:click='downloadPdf'>Download file
-                                                .pdf</button>
+                                            <a target="_blank" href="{{ asset('storage/' . $this->url['file_3']) }}"
+                                                class="btn bg-blue-lt" wire:click='downloadPdf'>Download file
+                                                .pdf</a>
                                         </div>
 
                                         <div class="list-inline-item">
-                                            <button class="btn bg-yellow-lt" wire:click='downloadJpg'>Download
-                                                file .jpg</button>
+                                            <a target="_blank" href="{{ asset('storage/' . $this->url['file_4']) }}"
+                                                class="btn bg-yellow-lt" wire:click='downloadJpg'>Download
+                                                file .jpg</a>
                                         </div>
                                     </div>
                                 </div>

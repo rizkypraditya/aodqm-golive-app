@@ -4,6 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-nav flex-row order-md-last">
+            <x-backend._partials.notification />
             <x-backend._partials.profile-dropdown />
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">

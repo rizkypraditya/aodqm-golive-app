@@ -164,13 +164,20 @@
 
                             <td style="width: 30px">
                                 <div class="row gap-2">
-                                    @unless (auth()->user()->roles != 'mitra')
+                                    @if (auth()->user()->roles == 'mitra')
                                         <div>
                                             <a class="btn btn-sm w-100" href="{{ route('revision.edit', $row->id) }}">
                                                 Kirim Revisi
                                             </a>
                                         </div>
-                                    @endunless
+                                    @else
+                                        <div>
+                                            <button class="btn btn-sm bg-green-lt w-100"
+                                                wire:click='aproveRevision({{ $row->id }})'>
+                                                Setujui Revisi
+                                            </button>
+                                        </div>
+                                    @endif
 
                                     <div>
                                         <a class="btn btn-sm bg-blue-lt w-100"

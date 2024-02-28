@@ -5,6 +5,7 @@ namespace App\Livewire\Report;
 use App\Models\Report;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -31,10 +32,10 @@ class Edit extends Component
         return [
             'deskripsi' => ['required', 'string', 'min:2'],
             'judulProyek' => ['required', 'string', 'min:2', 'max:255'],
-            'fileLaporan' => ['nullable', 'file', 'min:2', 'max:2048'],
-            'fileLaporanTwo' => ['nullable', 'file', 'min:2', 'max:2048'],
-            'fileLaporanThree' => ['nullable', 'file', 'min:2', 'max:2048'],
-            'fileLaporanFour' => ['nullable', 'file', 'min:2', 'max:2048'],
+            'fileLaporan' => ['nullable', 'file', 'min:2'],
+            'fileLaporanTwo' => ['nullable', 'file', 'min:2', 'mimes: xls,xlsx'],
+            'fileLaporanThree' => ['nullable', 'file', 'min:2'],
+            'fileLaporanFour' => ['nullable', 'file', 'min:2', 'mimes: jpg,jpeg'],
         ];
     }
 
@@ -72,8 +73,12 @@ class Edit extends Component
                         Storage::disk('local')->delete($report->file_report);
                     }
 
+                    File::delete(public_path('storage/' . $report->fileLaporan));
+
+                    $this->fileLaporan->store('file-laporan');
+
                     $report->update([
-                        'file_report' => $this->fileLaporan->store('file-laporan'),
+                        'file_report' => $this->fileLaporan->store('file-laporan', 'public'),
                     ]);
                 }
 
@@ -82,8 +87,12 @@ class Edit extends Component
                         Storage::disk('local')->delete($report->file_report_2);
                     }
 
+                    File::delete(public_path('storage/' . $report->fileLaporanTwo));
+
+                    $this->fileLaporanTwo->store('file-laporan');
+
                     $report->update([
-                        'file_report_2' => $this->fileLaporanTwo->store('file-laporan'),
+                        'file_report_2' => $this->fileLaporanTwo->store('file-laporan', 'public'),
                     ]);
                 }
 
@@ -92,8 +101,12 @@ class Edit extends Component
                         Storage::disk('local')->delete($report->file_report_3);
                     }
 
+                    File::delete(public_path('storage/' . $report->fileLaporanThree));
+
+                    $this->fileLaporanThree->store('file-laporan');
+
                     $report->update([
-                        'file_report_3' => $this->fileLaporanThree->store('file-laporan'),
+                        'file_report_3' => $this->fileLaporanThree->store('file-laporan', 'public'),
                     ]);
                 }
 
@@ -102,8 +115,12 @@ class Edit extends Component
                         Storage::disk('local')->delete($report->file_report_4);
                     }
 
+                    File::delete(public_path('storage/' . $report->fileLaporanFour));
+
+                    $this->fileLaporanFour->store('file-laporan');
+
                     $report->update([
-                        'file_report_4' => $this->fileLaporanFour->store('file-laporan'),
+                        'file_report_4' => $this->fileLaporanFour->store('file-laporan', 'public'),
                     ]);
                 }
             }

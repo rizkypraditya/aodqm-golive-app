@@ -5,6 +5,7 @@ namespace App\Livewire\Report;
 use App\Models\Report;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -30,7 +31,7 @@ class Create extends Component
             'fileLaporan' => ['required', 'file', 'min:2'],
             'fileLaporanTwo' => ['required', 'file', 'min:2'],
             'fileLaporanThree' => ['required', 'file', 'min:2'],
-            'fileLaporanFour' => ['required', 'file', 'min:2'],
+            'fileLaporanFour' => ['required', 'file', 'min:2', 'mimes: jpg,jpeg'],
         ];
     }
 
@@ -62,26 +63,34 @@ class Create extends Component
                 ]);
 
                 if ($this->fileLaporan) {
+                    $this->fileLaporan->store('file-laporan');
+
                     $report->update([
-                        'file_report' => $this->fileLaporan->store('file-laporan'),
+                        'file_report' => $this->fileLaporan->store('file-laporan', 'public'),
                     ]);
                 }
 
                 if ($this->fileLaporanTwo) {
+                    $this->fileLaporanTwo->store('file-laporan');
+
                     $report->update([
-                        'file_report_2' => $this->fileLaporanTwo->store('file-laporan'),
+                        'file_report_2' => $this->fileLaporanTwo->store('file-laporan', 'public'),
                     ]);
                 }
 
                 if ($this->fileLaporanThree) {
+                    $this->fileLaporanThree->store('file-laporan');
+
                     $report->update([
-                        'file_report_3' => $this->fileLaporanThree->store('file-laporan'),
+                        'file_report_3' => $this->fileLaporanThree->store('file-laporan', 'public'),
                     ]);
                 }
 
                 if ($this->fileLaporanFour) {
+                    $this->fileLaporanFour->store('file-laporan');
+
                     $report->update([
-                        'file_report_4' => $this->fileLaporanFour->store('file-laporan'),
+                        'file_report_4' => $this->fileLaporanFour->store('file-laporan', 'public'),
                     ]);
                 }
             }

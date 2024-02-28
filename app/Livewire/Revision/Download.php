@@ -15,6 +15,13 @@ class Download extends Component
     public $mitraId;
     public $revisionId;
 
+    public $url = [
+        'file_1' => '',
+        'file_2' => '',
+        'file_3' => '',
+        'file_4' => '',
+    ];
+
     public function mount($id)
     {
         $revision = Revision::findOrFail($id);
@@ -29,6 +36,11 @@ class Download extends Component
             $this->namaMitra = $report->mitra->name;
             $this->reportId = $report->id;
             $this->mitraId = $report->mitra->id;
+
+            $this->url['file_1'] = $report->file_report;
+            $this->url['file_2'] = $report->file_report_2;
+            $this->url['file_3'] = $report->file_report_3;
+            $this->url['file_4'] = $report->file_report_4;
         }
     }
 

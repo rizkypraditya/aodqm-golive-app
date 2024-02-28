@@ -50,7 +50,7 @@
                 <div class="hr-text">or</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col"><a href="#" class="btn w-100">
+                        <div class="col"><a href="{{ route('login-google') }}" class="btn w-100">
                                 Masuk Dengan Google
                             </a>
                         </div>

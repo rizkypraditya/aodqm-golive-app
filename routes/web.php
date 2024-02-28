@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginGoogleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::redirect('/', '/login');
+
+Route::get('/auth/google', [LoginGoogleController::class, 'loginWithGoogle'])->name('login-google');
+Route::any('/auth/google/callback', [LoginGoogleController::class, 'callbackGoogle'])->name('callback-google');
 
 Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')->group(function () {
 
@@ -51,7 +55,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
     /**
      *  report
      */
-    Route::namespace('Report')->middleware('roles:admin,user,mitra')->prefix('laporan')->name('report.')->group(function () {
+    Route::namespace('Report')->middleware('roles:admin,users,mitra')->prefix('laporan')->name('report.')->group(function () {
         Route::get('/', Index::class)->name('index');
         Route::get('/tambah', Create::class)->name('create');
         Route::get('/{id}/sunting', Edit::class)->name('edit');
@@ -62,7 +66,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
     /**
      *  revision
      */
-    Route::namespace('Revision')->middleware('roles:admin,user,mitra')->prefix('revisi')->name('revision.')->group(function () {
+    Route::namespace('Revision')->middleware('roles:admin,users,mitra')->prefix('revisi')->name('revision.')->group(function () {
         Route::get('/', Index::class)->name('index');
         Route::get('/{id}/sunting', Edit::class)->name('edit');
         Route::get('/{id}/detail', Detail::class)->name('detail');
@@ -70,9 +74,16 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
     });
 
     /**
+     *  history
+     */
+    Route::namespace('history')->middleware('roles:admin,users,mitra')->prefix('history')->name('history.')->group(function () {
+        Route::get('/', Index::class)->name('index');
+    });
+
+    /**
      * setting
      */
-    Route::prefix('pengaturan')->name('setting.')->middleware('roles:admin,user,mitra')->namespace('Setting')->group(function () {
+    Route::prefix('pengaturan')->name('setting.')->middleware('roles:admin,users,mitra')->namespace('Setting')->group(function () {
         Route::redirect('/', 'pengaturan/aplikasi');
 
         /**

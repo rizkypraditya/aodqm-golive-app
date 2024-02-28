@@ -16,8 +16,8 @@ class UserTableSeeder extends Seeder
     {
         $users = [
             [
-                'username' => 'Admin',
-                'email' => 'admin@gmail.com',
+                'username' => 'naya',
+                'email' => 'islainayahbahar@gmail.com',
                 'email_verified_at' => now(),
                 'roles' => 'admin',
                 'password' => Hash::make('admin123'),
